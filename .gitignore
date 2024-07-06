@@ -3,6 +3,14 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+app/*/migrations/
+app/db.sqlite3
+app/static
+app/*/__pycache__/
+env/
+app/geoip/
+static/
+
 # C extensions
 *.so
 
@@ -122,7 +130,6 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
 .venv
 env/
 venv/

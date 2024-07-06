@@ -1,0 +1,54 @@
+version: '3.9'
+
+services:
+  app:
+      restart: "on-failure"
+      build:
+        context: .
+      ports:
+          - 8000:8000
+      volumes:
+          - ./app:/app
+      command: >
+          sh -c "python manage.py runserver 0.0.0.0:8000"
+      env_file:
+          - ./.env
+      depends_on:
+          - redis
+          - db
+
+  redis:
+        restart: "on-failure"
+        image: redis:latest
+        ports:
+            - 6379:6379
+        volumes:
+            - redisdata:/data
+
+  db:
+    restart: always
+    image: kartoza/postgis:12.0
+    ports:
+        - 5432:5432
+    volumes:
+        - postgres_data:/var/lib/postgresql
+    env_file:
+        - ./database.env
+  
+  nginx:
+    build: ./nginx
+    ports:
+        - 80:8088
+    volumes:
+        - ./app/static/:/usr/share/nginx/html/static/
+        - ./app/media/:/usr/share/nginx/html/media/
+       
+    depends_on:
+        - app
+    
+volumes:
+  .:
+  redisdata:
+  postgres_data:
+  app:
+  
