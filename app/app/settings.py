@@ -180,13 +180,7 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = "smtp.sendgrid.net"
-EMAIL_HOST_USER = "apikey"
-EMAIL_HOST_PASSWORD = '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'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
+
 
 LEAFLET_CONFIG = {
     "DEFAULT_CENTER": (7.3696495,12.3445856),
