@@ -21,7 +21,7 @@ services:
         restart: "on-failure"
         image: redis:latest
         ports:
-            - 6379:6379
+            - 6380:6379
         volumes:
             - redisdata:/data
 
@@ -29,7 +29,7 @@ services:
     restart: always
     image: kartoza/postgis:12.0
     ports:
-        - 5432:5433
+        - 5433:5432
     volumes:
         - postgres_data:/var/lib/postgresql
     env_file:
@@ -38,7 +38,7 @@ services:
   nginx:
     build: ./nginx
     ports:
-        - 80:8088
+        - 8088:80
     volumes:
         - ./app/static/:/usr/share/nginx/html/static/
         - ./app/media/:/usr/share/nginx/html/media/

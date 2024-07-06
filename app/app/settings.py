@@ -19,6 +19,7 @@ dotenv.load_dotenv()
 
 DB_PORT= os.getenv('DB_PORT')
 DB_HOST = os.getenv('DB_HOST')
+REDIS_PORT = os.getenv('REDIS_HOST')
 DB_NAME = os.getenv('DB_NAME')
 DB_USER = os.getenv('DB_USER')
 DB_PASSWORD = os.getenv('DB_PASSWORD')
@@ -54,6 +55,8 @@ INSTALLED_APPS = [
     "rest_framework.authtoken",
     "corsheaders",
     "django_filters",
+    "accounts",
+    "chat"
 ]
 
 MIDDLEWARE = [
@@ -91,7 +94,7 @@ CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            "hosts": [("redis", 6379),],
+            "hosts": [("redis", REDIS_PORT),],
         },
     },
 }
@@ -156,6 +159,19 @@ TIME_ZONE = "UTC"
 USE_I18N = True
 
 USE_TZ = True
+
+CORS_ALLOWED_ORIGINS = [
+#    'http://localhost:8000',
+#    'http://127.0.0.1:8000',
+#    'http://localhost',
+    'http://0.0.0.0:8088'
+]
+#
+CSRF_TRUSTED_ORIGINS = [
+#    'http://localhost:8000'
+    'http://0.0.0.0:8088'
+#    'http://localhost',
+]
 CORS_ORIGIN_ALLOW_ALL = True
 CSRF_ORIGIN_ALLOW_ALL = True
 
@@ -167,6 +183,7 @@ GEOIP_PATH = os.path.join(BASE_DIR,'geoip')
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
 
+AUTH_USER_MODEL = "accounts.User"
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
