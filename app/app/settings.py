@@ -56,7 +56,8 @@ INSTALLED_APPS = [
     "corsheaders",
     "django_filters",
     "accounts",
-    "chat"
+    "chat",
+    "test"
 ]
 
 MIDDLEWARE = [

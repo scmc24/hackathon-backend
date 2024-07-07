@@ -8,6 +8,10 @@ from django.utils import timezone
 from rest_framework.authtoken.models import Token
 
 
+PROFILE_TYPE = (
+    ("EMPLOYER","EMPLOYER"),
+    ("STUDENT","STUDENT")
+)
 class User(AbstractUser):
     code = models.CharField(max_length=16,null=True)
 
@@ -17,6 +21,8 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
     telephone = models.CharField(max_length=20)
     avatar = models.FileField(upload_to="images/profiles/")
+    profile_type = models.CharField(max_length=20,choices=PROFILE_TYPE,default="STUDENT")
+    
 
     def __str__(self):
         
