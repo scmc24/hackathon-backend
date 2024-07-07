@@ -165,11 +165,13 @@ CORS_ALLOWED_ORIGINS = [
 #    'http://127.0.0.1:8000',
 #    'http://localhost',
     'http://0.0.0.0:8088',
+    'http://kamergaz.life:8088',
     'http://144.126.152.251:8088',
 ]
 #
 CSRF_TRUSTED_ORIGINS = [
-#    'http://localhost:8000'
+#    'http://localhost:8000',
+    'http://kamergaz.life:8088',
     'http://0.0.0.0:8088',
     'http://144.126.152.251:8088',
 #    'http://localhost',
