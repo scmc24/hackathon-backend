@@ -24,8 +24,25 @@ class TestSerializer(serializers.ModelSerializer):
         model = Test
         fields = ['id', 'title', 'description', 'time_limit', 'created_by', 'created_at', 'updated_at', 'questions']
 
+
+class AttemptSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Attempt
+        fields = ['testAttempt','id', 'question','answer']
+        read_only_fields = []
+  
 class TestAttemptSerializer(serializers.ModelSerializer):
+    attempts = AttemptSerializer(many=True,read_only=True)
     class Meta:
         model = TestAttempt
-        fields = ['id', 'test', 'user', 'start_time', 'end_time', 'score']
+        fields = ['id', 'test','attempts','user', 'start_time', 'end_time', 'score']
         read_only_fields = ['start_time', 'score']
+      
+
+    
+  
+class BadgeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Badge
+        fields = ['id', 'test', 'user', 'description', 'created_at']
+        read_only_fields = ['created_at']

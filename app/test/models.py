@@ -33,6 +33,7 @@ class Answer(models.Model):
     def __str__(self):
         return f"{self.question.text[:20]}... - {self.text[:20]}..."
 
+
 class TestAttempt(models.Model):
     test = models.ForeignKey(Test, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -42,3 +43,15 @@ class TestAttempt(models.Model):
 
     def __str__(self):
         return f"{self.user.username} - {self.test.title}"
+
+class Attempt(models.Model):
+    testAttempt = models.ForeignKey(TestAttempt, on_delete=models.CASCADE,related_name='attempts')
+    question = models.ForeignKey(Question,on_delete=models.SET_NULL,null=True)
+    answer = models.ForeignKey(Answer,on_delete=models.SET_NULL,null=True )
+    
+
+class Badge(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    test = models.ForeignKey(Test, on_delete=models.SET_NULL,null=True)
+    description = models.CharField(max_length=100)
+    created_at = models.DateTimeField(auto_now=True)
