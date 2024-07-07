@@ -23,7 +23,7 @@ services:
         ports:
             - 6380:6379
         volumes:
-            - ./redisdata:/data
+            - redisdata:/data
 
   db:
     restart: always
@@ -31,7 +31,7 @@ services:
     ports:
         - 5433:5432
     volumes:
-        - ./postgres_data:/var/lib/postgresql
+        - postgres_data:/var/lib/postgresql
     env_file:
         - ./database.env
   
