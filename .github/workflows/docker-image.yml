@@ -13,7 +13,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      -  shell: bash
+       - uses: actions/checkout@v4
+       - shell: bash
+       - name: install ssh keys
          env:
             SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
             SSH_HOST: ${{ secrets.SSH_HOST }}
@@ -21,13 +23,12 @@ jobs:
             WORK_DIR: ${{ secrets.WORK_DIR}}
             MAIN_BRANCH: ${{ secrets.MAIN_BRANCH}}
             
-      - name: install ssh keys
       # check this thread to understand why its needed:
       # https://stackoverflow.com/a/70447517
-        run: |
+         run: |
           echo $SSH_PRIVATE_KEY 
           ssh-keyscan -H $SSH_HOST > ~/.ssh/known_hosts
-      - name: connect and pull
-        run: ssh $SSH_USER@$SSH_HOST "cd $WORK_DIR && git checkout $MAIN_BRANCH && git pull && exit"
-      - name: re-deploy on server
-        run: docker compose down && docker compose build && docker compose up
+       - name: connect and pull
+         run: ssh $SSH_USER@$SSH_HOST "cd $WORK_DIR && git checkout $MAIN_BRANCH && git pull && exit"
+       - name: re-deploy on server
+         run: docker compose down && docker compose build && docker compose up
