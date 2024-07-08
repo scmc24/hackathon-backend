@@ -14,7 +14,8 @@ PROFILE_TYPE = (
 )
 class User(AbstractUser):
     code = models.CharField(max_length=16,null=True)
-
+    nb_challenge = models.IntegerField(default=0)
+    nb_certifications = models.IntegerField(default=0)
 
 class Profile(models.Model):
     
@@ -22,7 +23,7 @@ class Profile(models.Model):
     telephone = models.CharField(max_length=20)
     avatar = models.FileField(upload_to="images/profiles/")
     profile_type = models.CharField(max_length=20,default="STUDENT")
-    
+    description = models.TextField(max_length=200,null=True,blank=True)
 
     def __str__(self):
         

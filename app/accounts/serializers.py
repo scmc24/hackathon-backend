@@ -8,7 +8,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         
         model = Profile
-        fields = ["user", "telephone", "avatar","profile_type"]
+        fields = ["user", "telephone", "avatar","profile_type","description"]
         extra_kwargs = {
                         "telephone": {"required": False},
                         "avatar": {"required": False}}
@@ -24,6 +24,7 @@ class UserSerializer(ModelSerializer):
     badges = BadgeSerializer(many=True)
     profile = ProfileSerializer(read_only=True)
     password = serializers.CharField(required=False,source="user.password")
+    
     class Meta:
         
         model = User
