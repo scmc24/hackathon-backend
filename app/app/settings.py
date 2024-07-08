@@ -163,14 +163,14 @@ USE_I18N = True
 
 USE_TZ = True
 
-CORS_ALLOWED_ORIGINS = [
+"""CORS_ALLOWED_ORIGINS = [
     'http://localhost:5320',
     'http://localhost:5321',
     'http://0.0.0.0:8088',
     'http://kamergaz.life:8088',
     'http://144.126.152.251:8088',
     'http://techdiscov.vercel.app'
-]
+]"""
 
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:5320',
