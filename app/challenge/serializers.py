@@ -21,7 +21,8 @@ class UserChallengeSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserChallenge
         fields = '__all__'
-    
+
+
 class PrizeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Prize
