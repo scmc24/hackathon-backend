@@ -164,12 +164,12 @@ USE_I18N = True
 USE_TZ = True
 
 CORS_ALLOWED_ORIGINS = [
-#    'http://localhost:8000',
-#    'http://127.0.0.1:8000',
-#    'http://localhost',
+    'http://localhost:5320',
+    'http://localhost:5321',
     'http://0.0.0.0:8088',
     'http://kamergaz.life:8088',
     'http://144.126.152.251:8088',
+    'http://techdiscov.vercel.app'
 ]
 
 CORS_ORIGIN_WHITELIST = [
@@ -178,16 +178,17 @@ CORS_ORIGIN_WHITELIST = [
     'http://0.0.0.0:8088',
     'http://kamergaz.life:8088',
     'http://144.126.152.251:8088',
-    'http://techdiscov.vercel.app'
+    'https://techdiscov.vercel.app'
     
 ]
 #
 CSRF_TRUSTED_ORIGINS = [
-#    'http://localhost:8000',
-    'http://kamergaz.life:8088',
+    'http://localhost:5320',
+    'http://localhost:5321',
     'http://0.0.0.0:8088',
+    'http://kamergaz.life:8088',
     'http://144.126.152.251:8088',
-#    'http://localhost',
+    'https://techdiscov.vercel.app'
 ]
 CORS_ORIGIN_ALLOW_ALL = True
 CSRF_ORIGIN_ALLOW_ALL = True
