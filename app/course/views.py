@@ -25,6 +25,9 @@ class UserCourseViewSet(viewsets.ModelViewSet):
     serializer_class = UserCourseSerializer
     queryset = UserCourse.objects.all()
 
+    # def retrieve(self, request, id):
+    #     ...
+
 
 class CourseVideoViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]

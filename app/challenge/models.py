@@ -16,3 +16,21 @@ class UserChallenge(models.Model):
     score = models.FloatField(default=0)
     remarks = models.TextField(blank=True)
 
+
+class Prize(models.Model):
+    title = models.CharField(max_length=255)
+    value = models.FloatField()
+    description = models.TextField()
+
+
+class ChallengePrize(models.Model):
+    challenge = models.ForeignKey(Challenge, on_delete=models.CASCADE)
+    prize = models.ForeignKey(Prize, on_delete=models.CASCADE)
+
+
+class PrizeWinner(models.Model):
+    challengeprize = models.ForeignKey(ChallengePrize, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now_add=True)
+    remarks = models.TextField(blank=True, null=True)
+

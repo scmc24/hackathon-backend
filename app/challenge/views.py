@@ -24,3 +24,21 @@ class UserChallengeViewSet(viewsets.ModelViewSet):
     serializer_class = UserChallengeSerializer
     queryset = UserChallenge.objects.all()
 
+class PrizeViewSet(viewsets.ModelViewSet):
+    permission_classes = [permissions.IsAuthenticated]
+    lookup_field = 'id'
+    serializer_class = PrizeSerializer
+    queryset = Prize.objects.all()
+
+class ChallengePrizeViewSet(viewsets.ModelViewSet):
+    permission_classes = [permissions.IsAuthenticated]
+    lookup_field = 'id'
+    serializer_class = ChallengePrizeSerializer
+    queryset = ChallengePrize.objects.all()
+
+class PrizeWinnerViewSet(viewsets.ModelViewSet):
+    permission_classes = [permissions.IsAuthenticated]
+    lookup_field = 'id'
+    serializer_class = PrizeWinnerSerializer
+    queryset = PrizeWinner.objects.all()
+
