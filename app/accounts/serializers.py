@@ -2,14 +2,13 @@ from .models import *
 from rest_framework import serializers
 from django.contrib.auth import authenticate
 from rest_framework.serializers import ModelSerializer
-
+from test.serializers import BadgeSerializer
 
 class ProfileSerializer(serializers.ModelSerializer):
-    
     class Meta:
         
         model = Profile
-        fields = ["user", "telephone", "avatar"]
+        fields = ["user", "telephone", "avatar","profile_type"]
         extra_kwargs = {
                         "telephone": {"required": False},
                         "avatar": {"required": False}}
@@ -22,14 +21,14 @@ class ProfileSerializer(serializers.ModelSerializer):
     
     
 class UserSerializer(ModelSerializer):
-    
+    badges = BadgeSerializer(many=True)
     profile = ProfileSerializer(read_only=True)
     password = serializers.CharField(required=False,source="user.password")
     class Meta:
         
         model = User
       
-        fields = ["id","username","email","password","profile"]
+        fields = ["id","username","email","password","profile","badges"]
        
     def create(self, validated_data, *args, **kwargs):
         

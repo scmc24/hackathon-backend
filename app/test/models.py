@@ -51,7 +51,7 @@ class Attempt(models.Model):
     
 
 class Badge(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE,related_name="badges")
     test = models.ForeignKey(Test, on_delete=models.SET_NULL,null=True)
     description = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now=True)

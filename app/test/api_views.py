@@ -88,8 +88,8 @@ class TestViewSet(viewsets.ModelViewSet):
         
         test_attempt.end_time = timezone.now()
         
-        if(score >= 50):
-            Badge.objects.create(user,test,description="Congratulations you did it !!")
+        if(score == 100):
+            Badge.objects.create(user=user,test=test,description="Congratulations you did it !!")
         test_attempt.score = score
         test_attempt.save()
         
