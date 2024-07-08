@@ -6,7 +6,7 @@ class Challenge(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     title = models.CharField(blank=False, null=True)
     description = models.TextField(blank=False, null=True)
-    prize = models.FloatField(blank=False, null=True)
+    state = models.BooleanField(default=True)
 
 
 class UserChallenge(models.Model):
