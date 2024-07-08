@@ -57,7 +57,9 @@ INSTALLED_APPS = [
     "django_filters",
     "accounts",
     "chat",
-    "test"
+    "test",
+    "challenge",
+    "course"
 ]
 
 MIDDLEWARE = [
