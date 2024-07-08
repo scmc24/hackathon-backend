@@ -1,4 +1,4 @@
-from .models import *
+from course.models import *
 from accounts.serializers import UserSerializer
 from rest_framework import serializers
 

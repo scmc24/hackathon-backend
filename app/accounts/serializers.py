@@ -1,4 +1,4 @@
-from .models import *
+from accounts.models import *
 from rest_framework import serializers
 from django.contrib.auth import authenticate
 from rest_framework.serializers import ModelSerializer

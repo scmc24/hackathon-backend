@@ -14,7 +14,7 @@ from rest_framework import filters
 
 import threading
 import sys
-from .serializers import *
+from accounts.serializers import *
 from .models import *
 
 
@@ -111,6 +111,7 @@ class LoginViewSet(viewsets.ModelViewSet):
                         "email": user.email,
                         "username": user.username,
                         "admin": user.is_superuser,
+                        "profile_type": user.profile.profile_type
                         
                     },
                 }
