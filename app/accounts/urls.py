@@ -15,3 +15,5 @@ router.register(r'signup', SignUpViewSet,basename='signup')
 urlpatterns = router.urls
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
