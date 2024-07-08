@@ -96,8 +96,11 @@ class LoginViewSet(viewsets.ModelViewSet):
             user = authenticate(request, username=username, password=password)
             
             if user is None:
-                user = self.model.objects.get(username=username, password=password)
-                
+                try:
+                   user = self.model.objects.get(username=username, password=password)
+                except User.DoesNotExist:
+                    return Response({"message":"User doesnot exist"}, status=status.HTTP_400_BAD_REQUEST)
+    
             if user is not None:
                 token = Token.objects.get(user=user)
                 login(request=request, user=user)
