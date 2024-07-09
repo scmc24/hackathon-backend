@@ -35,6 +35,8 @@ echo "=============== migrate course ===============\n"
 python manage.py migrate course
 echo "=============== migrate challenge ===============\n"
 python manage.py migrate challenge
+echo "=============== migrate all ==============\n"
+python manage.py migrate
 
 echo "done ."
 echo "==============================================================="
