@@ -17,20 +17,10 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Deploy to Test Server
-
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}"
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          cd ~/.ssh
-          chmod 600 id_rsa
-          ssh-keyscan -H -t ecdsa ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
-          sudo apt-get install sshpass
 
       - name: Deploy to server
         run: |
-          sshpass -p '${{ secrets.SSH_PASSWORD }}' ssh -v -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} <<'ENDSSH'
+          ssh -v -o StrictHostKeyChecking=no -i ${{ secrets.SSH_PRIVATE_KEY }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} <<'ENDSSH'
           cd ${{ secrets.WORK_DIR }}
           ls -l
           git pull
