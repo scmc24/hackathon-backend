@@ -21,11 +21,11 @@ jobs:
       - name: Deploy to server
         run: |
           sudo apt install sshpass
-          sshpass -p ${{ secrets.SSH_PASSWORD}} ssh christian@144.126.152.251 <<'ENDSSH'
+          sshpass -p "userchristian" ssh christian@144.126.152.251 
           cd ${{ secrets.WORK_DIR }}
           ls -l
           git pull
           docker compose down 
           docker compose build
           docker compose up
-          ENDSSH
+          
