@@ -20,7 +20,7 @@ jobs:
 
       - name: Deploy to server
         run: |
-          ssh -v -o StrictHostKeyChecking=no -i ${{ secrets.SSH_PRIVATE_KEY }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} <<'ENDSSH'
+          ssh christian@$144.126.152.251 <<'ENDSSH'
           cd ${{ secrets.WORK_DIR }}
           ls -l
           git pull
