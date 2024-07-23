@@ -20,7 +20,8 @@ jobs:
 
       - name: Deploy to server
         run: |
-          ssh christian@$144.126.152.251 <<'ENDSSH'
+          apt install sshpass
+          sshpass -p ${{ secrets.SSH_PASSWORD}} ssh christian@144.126.152.251 <<'ENDSSH'
           cd ${{ secrets.WORK_DIR }}
           ls -l
           git pull
