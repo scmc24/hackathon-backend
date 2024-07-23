@@ -32,6 +32,7 @@ jobs:
         run: |
           sshpass -p '${{ secrets.SSH_PASSWORD }}' ssh -v -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} <<'ENDSSH'
           cd ${{ secrets.WORK_DIR }}
+          ls -l
           git pull
           docker compose down 
           docker compose build
